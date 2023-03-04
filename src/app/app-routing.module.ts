@@ -8,8 +8,8 @@ import { OnDeliverComponent } from './on-deliver/on-deliver.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 const routes: Routes = [
 
-  // {path:'',redirectTo:"orders", pathMatch:'full'},
-  
+  {path:'',redirectTo:"orders", pathMatch:'full'},
+
   {path:'orders', component: OrdersComponent}
   ,
   {path:'accepts', component: AcceptsOrdersComponent}
@@ -30,7 +30,7 @@ const routes: Routes = [
   ,
   {path:'login' , component: LoginComponent},
   // ,
-  // {path:'**',redirectTo:'not-found' , pathMatch:'full'}
+  // {path:'**',redirectTo:'orders' , pathMatch:'full'}
 
 ];
 @NgModule({

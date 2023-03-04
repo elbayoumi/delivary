@@ -1,3 +1,19 @@
+
+<!-- 
+<i class="fas fa-cloud"></i>
+<i class="fas fa-heart"></i>
+<i class="fas fa-car"></i>
+<i class="fas fa-street-view"></i>
+<i class="fas fa-user-plus"></i>
+<i class="fas fa-user-alt-slash"></i>
+<i class="fas fa-thumbs-up"></i>
+<i class="fas fa-thumbs-down"></i>
+<i class="fas fa-map-marker-alt"></i>
+<i class="fas fa-wallet"></i>
+<i class="fas fa-redo"></i>
+<i class="fas fa-unlock"></i>
+<i class="fas fa-sign-out-alt"></i>
+<i class="fas fa-sign-in"></i> -->
 <section class="vh-100 gradient-custom">
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
@@ -6,14 +22,14 @@
           <div class="card-body p-5 text-center" >
 
 
+<!--
 
-
- <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+ <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
   <label>
     Name:
     <input type="text" formControlName="name">
   </label>
-  <p>{{errorUserName}}</p> 
+  <p>{{errorUserName}}</p>
   <br>
   <label>
     password:
@@ -21,7 +37,24 @@
   </label>
   <p>{{errorPass}}</p>
   <br>
-  <button type="submit">Submit</button>
+  <button type="submit" class="btn" ><i class="fas fa-unlock "></i>
+  </button>
+</form> -->
+
+<form class="form-signin" [formGroup]='loginForm' (submit)="login()">
+  <h1 class="h3 mb-3 fw-normal">Login</h1>
+
+  <div class="form-floating">
+    <input class="form-control" id="floatingInput" formControlName="username">
+    <label for="floatingInput">Username</label>
+  </div>
+  <div class="form-floating">
+    <input type="password" class="form-control" id="floatingPassword" formControlName="password">
+    <label for="floatingPassword">Password</label>
+  </div>
+  <button class="w-100 btn btn-lg btn-primary" type="submit" [disabled]="!loginForm.valid">Login</button>
+  <br><br>
+  <p *ngIf="message" class="alert alert-danger alert-dismissible fade show">{{message}}</p>
 </form>
 
             <!-- <form class="mb-md-5 mt-md-4 pb-5"[formGroup]="loginForm" (ngSubmit)="onSubmit()" >
@@ -56,6 +89,7 @@
       </div>
     </div>
   </div>
+
 </section>
 
 
