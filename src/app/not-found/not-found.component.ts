@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 })
 export class NotFoundComponent {
 constructor(private router :Router){}
-goTo(params:any){
+goTo(params:string){
   this.router.navigate([params]);
 }
 }
