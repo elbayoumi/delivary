@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { OrdersService } from './services/orders.service';
 import { Order } from '../interfaces/order';
 import { AuthService } from '../auth/auth.service';
+import { Waiting } from '../interfaces/waiting';
 
 @Component({
   selector: 'app-orders',
@@ -12,12 +13,19 @@ import { AuthService } from '../auth/auth.service';
 export class OrdersComponent implements OnInit  {
 constructor(private router: Router, private service:OrdersService ,private authService :AuthService){}
 laoding:boolean = false;
-@Input() dataArrayForApi:Order[]=[
-  {id:'1',title:"Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops","price":109.95,"description":"Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday","category":"men's clothing","image":"https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg","rating":{"rate":3.9,"count":120}}
-];
+
+allDataArrayForApi:Waiting | undefined
+message:string =''
+ @Input() dataArrayForApi :any =''
 goTo(param:any,i:any){
 
   // this.router.navigate([param,this.dataArrayForApi[i].id])
+   this.authService.updateStatus(param,this.dataArrayForApi[i].id).subscribe((res:any)=>{
+    console.log(res);
+  },(err:any)=>{
+    console.log(err.message);
+  })
+
   this.routingForParamOrNot(param,this.dataArrayForApi[i].id)
   console.log(this.dataArrayForApi[i].id)
 }
@@ -28,7 +36,7 @@ ngOnInit():void{
   }
       else{
   this.getOrders();
-  console.log(this.authService.isAuthenticated())
+  // console.log(this.authService.isAuthenticated())
     }
 }
 ///take one or more parameters
@@ -46,16 +54,21 @@ getOrders(){
   this.laoding=true
   this.service.getAllOrders().subscribe((res: any) =>{
     this.laoding=false
-
-    // console.log(res);
-    this.dataArrayForApi=res
+    this.dataArrayForApi=res.data
+    this.allDataArrayForApi=res
+    this.message=res.message
+    // console.log("aaarrray",res);
+    // this.dataArrayForApi=res.filter((a:any) => { return a.status == "waiting"})
     // console.log(this.dataArrayForApi)
+
   }
 ,
 (error:any)=>{
-  console.log( error.message);
+ 
   this.laoding=false
-
+  this.message=error.error.message
+  error.status==406?setTimeout(()=>this.router.navigate(['onDelivering']), 3000):''
+// console.log('get all',error)
 },
 
   )

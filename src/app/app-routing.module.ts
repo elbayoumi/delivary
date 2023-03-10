@@ -16,21 +16,21 @@ const routes: Routes = [
   ,
   {path:'profile', component: ProfileComponent}
   ,
-  {path:'accepts', component: AcceptsOrdersComponent}
+  {path:'delivered', component: AcceptsOrdersComponent}
 
   ,
-  {path:'accepts/:id', component: AcceptsOrdersComponent}
+  {path:'delivered/:id', component: AcceptsOrdersComponent}
   ,
-  {path:'on-delivering', component: OnDeliverComponent}
+  {path:'onDelivering', component: OnDeliverComponent}
 ,
-  {path:'on-delivering/:id', component: OnDeliverComponent}
+  {path:'onDelivering/:id', component: OnDeliverComponent}
   ,
   {path:'not-found', component: NotFoundComponent}
 
   ,
-  {path:'rejects', component: RejectsOrdersComponent}
+  {path:'returned', component: RejectsOrdersComponent}
   ,
-  {path:'rejects/:id', component: RejectsOrdersComponent}
+  {path:'returned/:id', component: RejectsOrdersComponent}
   ,
   {path:'login' , component: LoginComponent},
    {path:'**',redirectTo:'orders' , pathMatch:'full'}
@@ -40,6 +40,6 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { 
+export class AppRoutingModule {
 
 }
