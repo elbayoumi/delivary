@@ -1,7 +1,7 @@
 <!-- <app-header ></app-header> -->
-<section >
+<section *ngIf="message==''">
   <div [ngClass]="'container' ">
-   
+
 
     <div [ngClass]="'row'">
       <div [ngClass]="'col-lg-4'">
@@ -9,9 +9,9 @@
           <div [ngClass]="'card-body text-center'">
             <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
               [ngClass]="'rounded-circle img-fluid'" style="width: 150px;">
-            <!-- <h5 [ngClass]="'my-3">{{hisInfo.name}}</h5> -->
+            <!-- <h5 [ngClass]="'my-3">{{delevaryGuyInfo.name}}</h5> -->
             <p [ngClass]="'text-muted mb-1'">Create Profile At :</p>
-            <p [ngClass]="'text-muted mb-1'"> {{hisInfo.created_at}}</p>
+            <p [ngClass]="'text-muted mb-1'"> {{delevaryGuyInfo.created_at}}</p>
             <!-- <p [ngClass]="'text-muted mb-4"></p> -->
           </div>
         </div>
@@ -25,7 +25,7 @@
                 <p [ngClass]="'mb-0'">Full Name</p>
               </div>
               <div [ngClass]="'col-sm-9'">
-                <p [ngClass]="'text-muted mb-0'">{{hisInfo.name}}</p>
+                <p [ngClass]="'text-muted mb-0'">{{delevaryGuyInfo.name}}</p>
               </div>
             </div>
             <hr>
@@ -34,7 +34,7 @@
                 <p [ngClass]="'mb-0'">Email</p>
               </div>
               <div [ngClass]="'col-sm-9'">
-                <p [ngClass]="'text-muted mb-0'">{{hisInfo.email}}</p>
+                <p [ngClass]="'text-muted mb-0'">{{delevaryGuyInfo.email}}</p>
               </div>
             </div>
             <hr>
@@ -45,52 +45,36 @@
                 <p [ngClass]="'mb-0'">Mobile</p>
               </div>
               <div [ngClass]="'col-sm-9'">
-                <p [ngClass]="'text-muted mb-0'">{{hisInfo.phone}}</p>
+                <p [ngClass]="'text-muted mb-0'">{{delevaryGuyInfo.phone}}</p>
               </div>
             </div>
             <hr>
-            <div [ngClass]="'row'">
-              <div [ngClass]="'col-sm-3'">
-                <p [ngClass]="'mb-0'">Address</p>
-              </div>
-              <div [ngClass]="'col-sm-9'">
-                <p [ngClass]="'text-muted mb-0'">Bay Area, San Francisco, CA</p>
-              </div>
-            </div>
-          </div> 
-                 <p [ngClass]="'btn'" (click)="changeData()">Edit</p>
-        </div>
-
-      </div>
-      <div [ngClass]="'col-lg-8'" *ngIf="boolChangeData">
-        <div [ngClass]="'card mb-4'">
-          <div [ngClass]="'card-body'">
-            <div [ngClass]="'row'">
-              <div [ngClass]="'col-sm-3'">
-                <p [ngClass]="'mb-0'">Full Name</p>
-              </div>
-              <div [ngClass]="'col-sm-9'">
-                <input [ngClass]="'text-muted mb-0'"  placeholder="" />
-              </div>
-            </div>
             <hr>
             <div [ngClass]="'row'">
               <div [ngClass]="'col-sm-3'">
-                <p [ngClass]="'mb-0'">Email</p>
+                <p [ngClass]="'mb-0'">motorCycleNumber</p>
               </div>
               <div [ngClass]="'col-sm-9'">
-                <p [ngClass]="'text-muted mb-0'">{{hisInfo.email}}</p>
+                <p [ngClass]="'text-muted mb-0'">{{delevaryGuyInfo.motorCycleNumber}}</p>
               </div>
             </div>
             <hr>
-
             <hr>
             <div [ngClass]="'row'">
               <div [ngClass]="'col-sm-3'">
                 <p [ngClass]="'mb-0'">Mobile</p>
               </div>
               <div [ngClass]="'col-sm-9'">
-                <p [ngClass]="'text-muted mb-0'">{{hisInfo.phone}}</p>
+                <p [ngClass]="'text-muted mb-0'">{{delevaryGuyInfo.motorCycleNumber}}</p>
+              </div>
+            </div>
+            <hr>
+            <div [ngClass]="'row'">
+              <div [ngClass]="'col-sm-3'">
+                <p [ngClass]="'mb-0'">Salary</p>
+              </div>
+              <div [ngClass]="'col-sm-9'">
+                <p [ngClass]="'text-muted mb-0'">{{delevaryGuyInfo.salary}}</p>
               </div>
             </div>
             <hr>
@@ -99,14 +83,77 @@
                 <p [ngClass]="'mb-0'">Address</p>
               </div>
               <div [ngClass]="'col-sm-9'">
-                <p [ngClass]="'text-muted mb-0'">Bay Area, San Francisco, CA</p>
+                <p [ngClass]="'text-muted mb-0'">{{delevaryGuyInfo}}</p>
               </div>
             </div>
           </div>
-          <p [ngClass]="'btn'" (click)="saveChangeData()">Save</p>
-
+          <p [ngClass]="'btn'" (click)="changeData()">Edit</p>
         </div>
+
       </div>
+      <div [ngClass]="'card mb-4'"></div>
+
+      <div [ngClass]="'card-body'">
+        <form [ngClass]="'col-lg-8'" *ngIf="boolChangeData" [formGroup]="dataUpdate" (ngSubmit)="save()">
+
+          <div [ngClass]="'row'">
+            <div [ngClass]="'col-sm-3'">
+              <p [ngClass]="'mb-0'">User Name</p>
+            </div>
+            <div [ngClass]="'col-sm-9'">
+              <input type="text" [ngClass]="'text-muted mb-0'" placeholder="FullName" formControlName="userName" />
+            </div>
+          </div>
+          <hr>
+          <div [ngClass]="'row'">
+            <div [ngClass]="'col-sm-3'">
+              <p [ngClass]="'mb-0'">Email</p>
+            </div>
+            <div [ngClass]="'col-sm-9'">
+              <input placeholder="your email" formControlName="email" [ngClass]="'text-muted mb-0'" />
+            </div>
+          </div>
+          <hr>
+
+          <hr>
+          <div [ngClass]="'row'">
+            <div [ngClass]="'col-sm-3'">
+              <p [ngClass]="'mb-0'">Mobile</p>
+            </div>
+            <div [ngClass]="'col-sm-9'">
+              <input type="text" placeholder="your Mobile" formControlName="phone" [ngClass]="'mb-0'" />"
+            </div>
+          </div>
+          <hr>
+          <div [ngClass]="'row'">
+            <div [ngClass]="'col-sm-3'">
+              <p [ngClass]="'mb-0'">Password</p>
+            </div>
+            <div [ngClass]="'col-sm-9'">
+              <input type="password" placeholder="your password" formControlName="password" [ngClass]="'mb-0'" />"
+            </div>
+          </div>
+          <hr>
+
+          <div [ngClass]="'row'">
+            <div [ngClass]="'col-sm-3'">
+              <p [ngClass]="'mb-0'">motorNumber</p>
+            </div>
+            <div [ngClass]="'col-sm-9'">
+              <input placeholder="your motorCycleNumber" formControlName="motorCycleNumber"
+                [ngClass]="'text-muted mb-0'" />
+            </div>
+          </div>
+          <hr>
+
+          <button type="submit" [ngClass]="'btn'">Save</button>
+
+        </form>
+      </div>
+
     </div>
   </div>
+</section>
+<section *ngIf="message!=''">
+  <p class="text-center">{{message}}</p>
 </section>

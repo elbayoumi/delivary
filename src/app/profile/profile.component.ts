@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { LocalStorageService } from '../services/local-storage.service';
-import { DelevaryInfo } from '../interfaces/delevary-info';
+import { DelevaryInfo } from '../shared/interfaces/delevary-info';
 import { Router } from '@angular/router';
-import { AuthService } from '../auth/auth.service';
+import { AuthService } from '../shared/auth/services/auth.service';
+import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-profile',
@@ -10,9 +10,12 @@ import { AuthService } from '../auth/auth.service';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent {
-boolChangeData: boolean = false;
+  dataUpdate!: FormGroup;
 
-  hisInfo:DelevaryInfo={
+  public boolChangeData: boolean = false;
+  message: any = ''
+  private id: any = ''
+  public delevaryGuyInfo: DelevaryInfo = {
     companyId: 0,
     created_at: '',
     email: '',
@@ -28,21 +31,41 @@ boolChangeData: boolean = false;
     userName: ''
   }
 
-// hisInfo=JSON.parse({})
-constructor(private  router : Router,private authService:AuthService){}
-ngOnInit() :void {
-  if(!this.authService.isAuthenticated()){
-  this.router.navigate(['login'])}else{
-this.hisInfo=(JSON.parse( localStorage.getItem('data') || ''))
-      console.log(this.hisInfo)
-      // console.log('\n inf \n',this.hisInfo,'\n inf \n')
+  // delevaryGuyInfo=JSON.parse({})
+  constructor(private router: Router, private authService: AuthService, private fb: FormBuilder) { }
+  ngOnInit(): void {
+    this.getDataInfo()
+    this.dataUpdate = this.fb.group({
+      email: ["", Validators.required],
+      motorCycleNumber: ["", Validators.required],
+      password: ["", Validators.required],
+      phone: ["", Validators.required],
+      userName: ["", Validators.required],
+
+    })
+  }
+
+  getDataInfo(): void {
+    this.authService.inf().subscribe((res: any) => {
+      this.delevaryGuyInfo = res.data
+      this.id = res.data.id
+    }, (err) => {
+      this.message = err.error.message
+      console.log(err.error.message)
+    })
+  }
+  changeData() {
+    this.boolChangeData = true
+  }
+
+  save(): void {
+    const dataUpdateValue = this.dataUpdate.value
+    console.log(dataUpdateValue)
+    this.authService.deliveryUpdateData(dataUpdateValue.email, dataUpdateValue.motorCycleNumber, dataUpdateValue.password, dataUpdateValue.phone, dataUpdateValue.userName, this.id).subscribe(res => {
+      console.log(res)
+      this.boolChangeData = false
+    }, err => console.log(err))
 
   }
-  }
-changeData(){
-  this.boolChangeData=true
-}
-saveChangeData(){
-  this.boolChangeData=false
-}
+
 }
