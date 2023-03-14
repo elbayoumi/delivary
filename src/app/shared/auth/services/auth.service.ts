@@ -19,7 +19,12 @@ export class AuthService {
   }
   logout() {
 
-    return this.http.post(environment.baseAPI + 'delivery/logout', { 'token': this.token, 'message': this.message })
+    return this.http.post(environment.baseAPI + 'delivery/logout', {
+      Headers:new HttpHeaders({
+
+        'authorization': `Bearer ${this.token}`
+    })
+    })
   }
   // allOrders():Observable<any>{
   //   return this.http.post(environment.baseAPI+'allOrders',{'token':this.token,'message':this.message})

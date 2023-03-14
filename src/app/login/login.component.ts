@@ -48,7 +48,7 @@ export class LoginComponent {
 
 
         localStorage.setItem('token', res.token)        // localStorage.setItem('data', JSON.stringify(res.deliveryGuy))
-        localStorage.setItem('id', res.deliveryGuy.id)        // localStorage.setItem('data', JSON.stringify(res.deliveryGuy))
+    // localStorage.setItem('data', JSON.stringify(res.deliveryGuy))
         // this.userService.setUserData(res.deliveryGuy)
         this.router.navigateByUrl('')
 

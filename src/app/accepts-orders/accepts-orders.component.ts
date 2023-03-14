@@ -15,6 +15,7 @@ export class AcceptsOrdersComponent {
   currentArrayOfData: Order | undefined;
   arrayFeeses: any;
   sumFeeses = 0
+  
   constructor(private router: Router, private service: AllOrdersService, private activatedRoute: ActivatedRoute,  private dataService: DataService, private authService: AuthService) { }
   @Input() dataArrayForApi: Order[] = [
     {
@@ -61,7 +62,7 @@ export class AcceptsOrdersComponent {
     this.authService.getDataByStatus('delivered').subscribe((res: any) => {
       this.dataArrayForApi = res.data
       this.arrayFeeses = res.data.map((res: any) => this.sumFeeses += res.id)
-      console.log(this.arrayFeeses)
+      localStorage.setItem('sumFeeses',JSON.stringify( this.sumFeeses))
       /// to check if id is an exest within or you wont all orsers accepts from api
       if (this.activatedRoute.snapshot.paramMap.get('id')) {
         this.currentArrayOfData = this.dataArrayForApi.find(i => i.id == (this.activatedRoute.snapshot.paramMap.get('id') || 1))

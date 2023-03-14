@@ -15,45 +15,34 @@ import { faLock } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-  faHome = faHome;
-  faCar = faCar;
-  faThumbsUp = faThumbsUp;
-  faStreetView = faStreetView;
-  faThumbsDown = faThumbsDown;
-  faEnvelope = faEnvelope;
-  faUser = faUser;
-  faLock = faLock;
+  public FontAwesome={
+  faHome : faHome,
+  faCar : faCar,
+  faThumbsUp : faThumbsUp,
+  faStreetView : faStreetView,
+  faThumbsDown : faThumbsDown,
+  faEnvelope : faEnvelope,
+  faUser : faUser,
+  faLock : faLock
+  }
   boolDesplayed: boolean = false;
   constructor(private router: Router, private authService: AuthService) { }
   goTo(param: string) {
     this.router.navigate([param]);
   }
-  // logout(prop:string){
-  // this.goTo(prop)
-  // localStorage.clear()
-  // setTimeout(()=>location.reload(),1)
-  // }
-  @Input() isLoggedIn(): boolean {
-    // Check if the user is logged in
-    return true; // or false
-  }
-  async logout() {
-    this.authService.logout().subscribe({
-      next: (res) => {
 
-        localStorage.clear()
-        this.router.navigate(['/login'])
-        console.log("teeeeeeeeeeeeeeeeeeeeeeeeeest logout success")
+   logout() {
+  this.authService.logout().subscribe((res:any) => {  
+    console.log('res',res)
 
-      }
-      , error: (error: any) => {
-        localStorage.clear()
-        this.router.navigate(['/login'])
-        console.log("teeeeeeeeeeeeeeeeeeeeeeeeeest logout failed")
 
-      }
-    })
-    // await location.reload()
+  },(err:any)=>{   
+
+
+    console.log('err',err)
+  })
+  this.router.navigate(['login'])
+  localStorage.clear()
   }
   // isLogin(even:boolean){
   // this.bool=even

@@ -1,4 +1,4 @@
-<!-- <app-header ></app-header> -->
+<!-- <app-header ></app-header>
 <section *ngIf="message==''">
   <div [ngClass]="'container' ">
 
@@ -9,10 +9,8 @@
           <div [ngClass]="'card-body text-center'">
             <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
               [ngClass]="'rounded-circle img-fluid'" style="width: 150px;">
-            <!-- <h5 [ngClass]="'my-3">{{delevaryGuyInfo.name}}</h5> -->
             <p [ngClass]="'text-muted mb-1'">Create Profile At :</p>
             <p [ngClass]="'text-muted mb-1'"> {{delevaryGuyInfo.created_at}}</p>
-            <!-- <p [ngClass]="'text-muted mb-4"></p> -->
           </div>
         </div>
 
@@ -101,7 +99,7 @@
               <p [ngClass]="'mb-0'">User Name</p>
             </div>
             <div [ngClass]="'col-sm-9'">
-              <input type="text" [ngClass]="'text-muted mb-0'" placeholder="FullName" formControlName="userName" />
+              <input type="text" ngClass="text" [ngClass]="'text-muted mb-0'" placeholder="FullName" formControlName="userName" />
             </div>
           </div>
           <hr>
@@ -110,7 +108,7 @@
               <p [ngClass]="'mb-0'">Email</p>
             </div>
             <div [ngClass]="'col-sm-9'">
-              <input placeholder="your email" formControlName="email" [ngClass]="'text-muted mb-0'" />
+              <input placeholder="your email" formControlngClass="email" [ngClass]="'text-muted mb-0'" />
             </div>
           </div>
           <hr>
@@ -121,7 +119,7 @@
               <p [ngClass]="'mb-0'">Mobile</p>
             </div>
             <div [ngClass]="'col-sm-9'">
-              <input type="text" placeholder="your Mobile" formControlName="phone" [ngClass]="'mb-0'" />"
+              <input type="text" ngClass="text" placeholder="your Mobile" formControlName="phone" [ngClass]="'mb-0'" />"
             </div>
           </div>
           <hr>
@@ -156,4 +154,79 @@
 </section>
 <section *ngIf="message!=''">
   <p class="text-center">{{message}}</p>
-</section>
+</section> -->
+<!-- ///////////////////////////////////////////////////////////// -->
+  <!-- 
+          <h1 class="contact-heading">hello{{delevaryGuyInfo.name}} This Page For Your Data</h1>
+          <hr>
+          <form action="#" method="POST" *ngIf="!boolChangeData">
+              <fieldset>
+                  <legend>Your Form Data</legend>
+                  <p>Name     :     <span ngClass="text"></span></p>
+                  <p>userName :     <span ngClass="text"></span></p>
+                  <p>E-mail   :     <span ngClass="text">{{delevaryGuyInfo.email}}</span></p>
+                  <p>national :     <span ngClass="text"></span></p>
+                  <p>Phone    :     <span ngClass="text"></span></p>
+                  <p>salary    :     <span ngClass="text">{{delevaryGuyInfo.salary}}</span></p>
+                  <input type="submit" value="Edit" ngClass="submit" (click)="changeData()">
+              </fieldset>
+          </form> -->
+<!-- ///////////////////////////////////////////////////////// -->
+
+<div class="wrapper m-auto"  *ngIf="!boolChangeData" >
+  <div class="img-area">
+    <div class="inner-area">
+      <img src="https://tinypic.host/images/2023/02/21/pikrepo.com-2.jpg" alt="">
+    </div>
+  </div>
+  <div class="icon arrow"><i class="fas fa-arrow-left"></i></div>
+  <div class="icon dots"><i class="fas fa-ellipsis-v"></i></div>
+  <div class="name">{{delevaryGuyInfo.userName}}</div>
+  <div class="about">{{delevaryGuyInfo.nationalId}}</div>
+  <!-- <div class="social-icons">
+    <a href="#" class="fb"><i class="fab fa-facebook-f"></i></a>
+    <a href="#" class="twitter"><i class="fab fa-twitter"></i></a>
+    <a href="#" class="insta"><i class="fab fa-instagram"></i></a>
+    <a href="#" class="yt"><i class="fab fa-youtube"></i></a>
+  </div> -->
+  <div class="buttons">
+    <button> <fa-icon [icon]="FontAwesome.faEnvelope"></fa-icon> {{delevaryGuyInfo.email}}</button>
+    <button><fa-icon [icon]="FontAwesome.faPhone"></fa-icon> {{delevaryGuyInfo.phone}}</button>
+  </div>
+  <div class="social-share">
+    <div class="row">
+
+      <fa-icon [icon]="FontAwesome.faMoneyBill"></fa-icon>
+      <!-- <fa-icon class="icon-2" [icon]="FontAwesome.faMoneyBill"></fa-icon> -->
+      <span>{{delevaryGuyInfo.salary}}</span>
+    </div>
+    <div class="row">
+
+      <fa-icon [icon]="FontAwesome.faMotorcycle"></fa-icon>
+      <span>{{delevaryGuyInfo.motorCycleNumber}}</span>
+    </div>
+    <div class="row">
+      <fa-icon [icon]="FontAwesome.faWallet"></fa-icon>
+      <span>{{sumFeeses}}</span>
+    </div>
+  </div>
+    <input type="submit" class="mt-4" value="Edit" ngClass="submit" (click)="changeData()">
+</div>
+
+
+<!-- /////////////////////////////////////////////////////////////// -->
+<!-- <h1 class="contact-heading">hello{{delevaryGuyInfo.name}}</h1>
+<hr> -->
+<form  *ngIf="boolChangeData" [formGroup]="dataUpdate" (ngSubmit)="save()">
+    <fieldset>
+        <legend>Your Form Data</legend>
+        <p>User Name : <input type="text" ngClass="text"  formControlName="userName" id="" placeholder="User Name" required></p>
+        <p>E-mail : <input type="email" ngClass="email" id="" formControlngClass="email" placeholder="Enter Your Email" required></p>
+        <p>Phone : <input type="number" ngClass="number" formControlName="phone" id="" placeholder="Contact Number" required></p>
+        <p>Password : <input type="text" ngClass="text" formControlName="password"  id="" placeholder="Password" required></p>
+        <p>MotorCycleNumber : <input type="text" ngClass="text"  formControlName="motorCycleNumber" id="" placeholder="motorCycleNumber" required></p>
+<button  type="submit" ngClass="submit" >Send</button>
+    </fieldset>
+
+</form>
+

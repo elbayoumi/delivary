@@ -7,6 +7,7 @@ nav {
   box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.19);
   border-radius: 1rem;
   border: transparent;
+  background-color: #F7F7F2;
   .container-fluid{
     .logout{
       color: var(--btn-color-danger);
@@ -52,14 +53,14 @@ nav {
 ///////////////////////
 
 
-body {
-  height: 100vh;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #eef0f5;
-}
+// body {
+//   height: 100vh;
+//   width: 100%;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   background: #eef0f5;
+// }
 /////////////////////////////////////////////////////////////////////////////////
 /// 
 // nav {
