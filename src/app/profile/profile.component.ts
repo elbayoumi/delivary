@@ -28,6 +28,7 @@ export class ProfileComponent {
 
   public boolChangeData: boolean = false;
   message: any = ''
+  confirmEditing=''
   private id: any = ''
   public delevaryGuyInfo: DelevaryInfo = {
     companyId: 0,
@@ -73,8 +74,11 @@ export class ProfileComponent {
   }
   changeData() {
     this.boolChangeData = true
-  }
 
+  }
+confirmEdit(){
+  this.confirmEditing='are you want to change'
+}
   save(): void {
     const dataUpdateValue = this.dataUpdate.value
     console.log(dataUpdateValue)
@@ -83,7 +87,10 @@ export class ProfileComponent {
       this.boolChangeData = false
       localStorage.clear()
       this.router.navigate(['login'])
-    }, err => console.log(err))
+    }, (err:string) => {
+      this.message = 'plz complite your data for save !!'
+
+      console.log(err)})
 
   }
 
