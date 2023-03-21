@@ -5,6 +5,10 @@ import { Order } from '../shared/interfaces/order';
 import { AuthService } from '../shared/auth/services/auth.service';
 import { Waiting } from '../shared/interfaces/waiting';
 import { UserService } from '../shared/services/userData/user.service';
+import { faPenToSquare } from '@fortawesome/free-solid-svg-icons'
+import { faTrash } from '@fortawesome/free-solid-svg-icons'
+import {faPhone} from '@fortawesome/free-solid-svg-icons'
+import {faMoneyBill1Wave} from '@fortawesome/free-solid-svg-icons'
 
 @Component({
   selector: 'app-orders',
@@ -12,13 +16,20 @@ import { UserService } from '../shared/services/userData/user.service';
   styleUrls: ['./orders.component.scss']
 })
 export class OrdersComponent implements OnInit {
+ FontAwesome={
+  faPenToSquare:faPenToSquare,
+  faTrash:faTrash,
+  faPhone:faPhone,
+  faMoneyBill1Wave:faMoneyBill1Wave,
+ }
+
   constructor(private router: Router, private service: OrdersService
     , private authService: AuthService, private userService: UserService) { }
-  laoding: boolean = false;
+  laoding: boolean = true;
 
   allDataArrayForApi: Waiting | undefined
   message: string = ''
-  @Input() dataArrayForApi: any = ''
+dataArrayForApi: any = ''
   goTo(param: any, i: any) {
 
     // this.router.navigate([param,this.dataArrayForApi[i].id])
@@ -55,8 +66,8 @@ export class OrdersComponent implements OnInit {
     this.laoding = true
     this.service.getAllOrders().subscribe((res: any) => {
       this.laoding = false
-      this.dataArrayForApi = res.data
-      this.allDataArrayForApi = res
+        this.dataArrayForApi = res.data
+        this.allDataArrayForApi = res
       this.message = res.message
       // console.log("aaarrray",res);
       // this.dataArrayForApi=res.filter((a:any) => { return a.status == "waiting"})
@@ -75,4 +86,12 @@ export class OrdersComponent implements OnInit {
     )
 
   }
+  // pusher(){
+  //   const pusher = new Pusher('APP_KEY', {
+  //     cluster: 'CLUSTER',
+  //     encrypted: true,
+  //   });
+
+  // }
+
 }

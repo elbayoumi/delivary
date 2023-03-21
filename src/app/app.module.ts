@@ -19,6 +19,8 @@ import { ProfileComponent } from './profile/profile.component';
 import * as compression from 'compression';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { LayoutComponent } from './layout/layout.component';
+import { ByscalSpinnerComponent } from './shared/components/byscal-spinner/byscal-spinner.component';
+import { AboutComponent } from './about/about.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +33,9 @@ import { LayoutComponent } from './layout/layout.component';
     NotFoundComponent,
     SpinnerComponent,
     ProfileComponent,
-    LayoutComponent
+    LayoutComponent,
+    ByscalSpinnerComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,

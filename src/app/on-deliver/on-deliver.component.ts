@@ -4,6 +4,7 @@ import { AuthService } from '../shared/auth/services/auth.service';
 import { OrdersService } from '../orders/services/orders.service';
 import { Order } from '../shared/interfaces/order';
 import { Waiting } from '../shared/interfaces/waiting';
+import {faPhone} from '@fortawesome/free-solid-svg-icons'
 
 @Component({
   selector: 'app-on-deliver',
@@ -13,6 +14,8 @@ import { Waiting } from '../shared/interfaces/waiting';
 export class OnDeliverComponent {
   constructor(private router: Router, private authService: AuthService, private activatedRoute: ActivatedRoute, private service: OrdersService) { }
   onDelivarig: any = ''
+  faPhone=faPhone
+  laoding: boolean = true;
 
   goTo(param: any) {
     if (param != 'orders') {
@@ -28,10 +31,14 @@ export class OnDeliverComponent {
     // })
   }
   ngOnInit(): void {
+    this.laoding = true
     this.authService.getDataByStatus('onDelivering').subscribe((res: any) => {
+      this.laoding = false
       this.onDelivarig = res
-      // console.log(res)
+      console.log(res)
     }, (error: any) => {
+      this.laoding = false
+
       console.log('this is error message', error)
     })
     // "status",

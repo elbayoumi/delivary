@@ -1,11 +1,12 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light mb-5 mt-3 rounded" >
   <div class="container-fluid">
     <div class="links">
-      <a (click)="goTo('orders')" class="nav-item " routerLinkActive="">      <fa-icon  [icon]="FontAwesome.faHome"></fa-icon>
+      <a routerLink="orders"  routerLinkActive="scal">      <fa-icon  [icon]="FontAwesome.faHome"></fa-icon>
       </a>
-      <a (click)="goTo('delivered')" routerLinkActive="">      <fa-icon [icon]="FontAwesome.faThumbsUp"></fa-icon>      </a>
-      <a (click)="goTo('onDelivering')">      <fa-icon [icon]="FontAwesome.faStreetView"></fa-icon>      </a>
-      <a (click)="goTo('returned')">       <fa-icon [icon]="FontAwesome.faThumbsDown"></fa-icon></a>
+      <a routerLink="delivered"   routerLinkActive="scal">      <fa-icon [icon]="FontAwesome.faThumbsUp"></fa-icon>      </a>
+      <a routerLink="onDelivering"  routerLinkActive="scal">      <fa-icon [icon]="FontAwesome.faStreetView"></fa-icon>      </a>
+      <a routerLink="returned" routerLinkActive="scal">       <fa-icon [icon]="FontAwesome.faThumbsDown"></fa-icon></a>
+      <a routerLink="profile"  routerLinkActive="scal">       <fa-icon [icon]="FontAwesome.faUser"></fa-icon></a>
 
     </div> <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
       data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -14,7 +15,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-      <li (click)="goTo('profile')" class="nav-item btn m-1 profile ico ">
+      <li  class="nav-item btn m-1 profile ico ">
         <img src="../../favicon.ico" alt="your Photo">
       </li>
 

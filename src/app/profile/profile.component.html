@@ -156,7 +156,7 @@
   <p class="text-center">{{message}}</p>
 </section> -->
 <!-- ///////////////////////////////////////////////////////////// -->
-  <!-- 
+  <!--
           <h1 class="contact-heading">hello{{delevaryGuyInfo.name}} This Page For Your Data</h1>
           <hr>
           <form action="#" method="POST" *ngIf="!boolChangeData">
@@ -210,7 +210,7 @@
       <span>{{sumFeeses}}</span>
     </div>
   </div>
-    <input type="submit" class="mt-4" value="Edit" ngClass="submit" (click)="changeData()">
+    <input type="submit" class="mt-4" value="Edit" ngClass="submit" data-bs-toggle="modal" data-bs-target="#exampleModal">
 </div>
 
 
@@ -221,7 +221,7 @@
     <fieldset>
         <legend>Your Form Data</legend>
         <p>User Name : <input type="text" ngClass="text"  formControlName="userName" id="" placeholder="User Name" required></p>
-        <p>E-mail : <input type="email" ngClass="email" id="" formControlngClass="email" placeholder="Enter Your Email" required></p>
+        <p>E-mail : <input type="email" ngClass="email" id="" formControlName="email" placeholder="Enter Your Email" required></p>
         <p>Phone : <input type="number" ngClass="number" formControlName="phone" id="" placeholder="Contact Number" required></p>
         <p>Password : <input type="text" ngClass="text" formControlName="password"  id="" placeholder="Password" required></p>
         <p>MotorCycleNumber : <input type="text" ngClass="text"  formControlName="motorCycleNumber" id="" placeholder="motorCycleNumber" required></p>
@@ -230,3 +230,24 @@
 
 </form>
 
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade m-auto" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary p-2" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary  p-2"  (click)="changeData()" >Edite</button>
+      </div>
+    </div>
+  </div>
+</div>
