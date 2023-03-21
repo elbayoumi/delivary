@@ -74,7 +74,7 @@ export class ProfileComponent {
   }
   changeData() {
     this.boolChangeData = true
-
+setTimeout(()=> this.confirmEditing='Are you sure to change your data?',200)
   }
 confirmEdit(){
   this.confirmEditing='are you want to change'
@@ -88,7 +88,7 @@ confirmEdit(){
       localStorage.clear()
       this.router.navigate(['login'])
     }, (err:string) => {
-      this.message = 'plz complite your data for save !!'
+      this.message = 'Please complete all information to be changed !!'
 
       console.log(err)})
 
