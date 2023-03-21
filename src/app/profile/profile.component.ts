@@ -74,7 +74,7 @@ export class ProfileComponent {
   }
   changeData() {
     this.boolChangeData = true
-setTimeout(()=> this.confirmEditing='Are you sure to change your data?',200)
+setTimeout(()=> this.confirmEditing='Are you sure to change your data?',300)
   }
 confirmEdit(){
   this.confirmEditing='are you want to change'
