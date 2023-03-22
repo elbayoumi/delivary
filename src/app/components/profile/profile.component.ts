@@ -1,34 +1,34 @@
 import { Component, OnInit } from '@angular/core';
-import { DelevaryInfo } from '../shared/interfaces/delevary-info';
+import { DelevaryInfo } from '../../shared/interfaces/delevary-info';
 import { Router } from '@angular/router';
-import { AuthService } from '../shared/auth/services/auth.service';
+import { AuthService } from '../../shared/auth/services/auth.service';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
-import {faPhone} from '@fortawesome/free-solid-svg-icons'
-import {faEnvelope} from '@fortawesome/free-solid-svg-icons'
-import {faMoneyBill} from '@fortawesome/free-solid-svg-icons'
-import {faMotorcycle} from '@fortawesome/free-solid-svg-icons'
-import {faWallet} from '@fortawesome/free-solid-svg-icons'
-import {faHomeAlt} from '@fortawesome/free-solid-svg-icons'
+import { faPhone } from '@fortawesome/free-solid-svg-icons'
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
+import { faMoneyBill } from '@fortawesome/free-solid-svg-icons'
+import { faMotorcycle } from '@fortawesome/free-solid-svg-icons'
+import { faWallet } from '@fortawesome/free-solid-svg-icons'
+import { faHomeAlt } from '@fortawesome/free-solid-svg-icons'
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent {
-  public sumFeeses=localStorage.getItem('sumFeeses')
-  public FontAwesome={
-    faPhone:faPhone,
-    faEnvelope:faEnvelope,
-    faMoneyBill:faMoneyBill,
-    faMotorcycle:faMotorcycle,
-    faWallet:faWallet,
-    faHomeAlt:faHomeAlt
+  public sumFeeses = localStorage.getItem('sumFeeses')
+  public FontAwesome = {
+    faPhone: faPhone,
+    faEnvelope: faEnvelope,
+    faMoneyBill: faMoneyBill,
+    faMotorcycle: faMotorcycle,
+    faWallet: faWallet,
+    faHomeAlt: faHomeAlt
   }
   dataUpdate!: FormGroup;
 
   public boolChangeData: boolean = false;
   message: any = ''
-  confirmEditing=''
+  confirmEditing = ''
   private id: any = ''
   public delevaryGuyInfo: DelevaryInfo = {
     companyId: 0,
@@ -74,11 +74,11 @@ export class ProfileComponent {
   }
   changeData() {
     this.boolChangeData = true
-setTimeout(()=> this.confirmEditing='Are you sure to change your data?',300)
+    setTimeout(() => this.confirmEditing = 'Are you sure to change your data?', 300)
   }
-confirmEdit(){
-  this.confirmEditing='are you want to change'
-}
+  confirmEdit() {
+    this.confirmEditing = 'are you want to change'
+  }
   save(): void {
     const dataUpdateValue = this.dataUpdate.value
     console.log(dataUpdateValue)
@@ -87,10 +87,11 @@ confirmEdit(){
       this.boolChangeData = false
       localStorage.clear()
       this.router.navigate(['login'])
-    }, (err:string) => {
+    }, (err: string) => {
       this.message = 'Please complete all information to be changed !!'
 
-      console.log(err)})
+      console.log(err)
+    })
 
   }
 

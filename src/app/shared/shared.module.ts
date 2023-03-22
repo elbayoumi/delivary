@@ -7,10 +7,10 @@ import { LoginComponent } from './login/login.component';
 import { OnDeliverComponent } from '../components/on-deliver/on-deliver.component';
 import { NotFoundComponent } from '../components/not-found/not-found.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
-import { ProfileComponent } from '../profile/profile.component';
+import { ProfileComponent } from '../components/profile/profile.component';
 import { LayoutComponent } from '../components/layout/layout.component';
 import { ByscalSpinnerComponent } from './components/byscal-spinner/byscal-spinner.component';
-import { AboutComponent } from '../components/about/about.component';
+import { AboutComponent } from '../about/about.component';
 import { AppRoutingModule } from '../app-routing.module';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
@@ -39,12 +39,12 @@ import { OrderHistoryModule } from '../components/order-history/order-history.mo
     HttpClientModule,
     ReactiveFormsModule,
     FontAwesomeModule,
+
   ],
   exports: [
     HeaderComponent,
     AppComponent,
     LoginComponent,
-
     ByscalSpinnerComponent,
     CommonModule,
     RouterModule,

@@ -44,7 +44,7 @@ export class OnDeliverComponent {
 
       console.log('this is error message', error)
     })
- 
+
   }
 
 }
