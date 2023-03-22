@@ -1,9 +1,9 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from '../shared/auth/services/auth.service';
-import { DataService } from '../shared/services/data/data.service'
-import { UserService } from '../shared/services/userData/user.service';
+import { AuthService } from '../auth/services/auth.service';
+import { DataService } from '../services/data/data.service'
+import { UserService } from '../services/userData/user.service';
 
 @Component({
   selector: 'app-login',
@@ -25,14 +25,14 @@ export class LoginComponent {
   constructor(private formBuilder: FormBuilder, private router: Router, private authService: AuthService, private routingService: DataService, private userService: UserService) { }
   ngOnInit(): void {
 
-      // this.loginForm=new FormGroup({
-      //   username:new FormControl('',Validators.required),
-      //   password:new FormControl('',Validators.required)
-      // })
-      this.loginForm = this.formBuilder.group({
-        username: ['', Validators.required],
-        password: ['', Validators.required],
-      })
+    // this.loginForm=new FormGroup({
+    //   username:new FormControl('',Validators.required),
+    //   password:new FormControl('',Validators.required)
+    // })
+    this.loginForm = this.formBuilder.group({
+      username: ['', Validators.required],
+      password: ['', Validators.required],
+    })
 
   }
 
@@ -48,7 +48,7 @@ export class LoginComponent {
 
 
         localStorage.setItem('token', res.token)        // localStorage.setItem('data', JSON.stringify(res.deliveryGuy))
-    // localStorage.setItem('data', JSON.stringify(res.deliveryGuy))
+        // localStorage.setItem('data', JSON.stringify(res.deliveryGuy))
         // this.userService.setUserData(res.deliveryGuy)
         this.router.navigateByUrl('')
 

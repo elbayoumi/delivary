@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '../shared/auth/services/auth.service';
+import { AuthService } from '../../shared/auth/services/auth.service';
 
 @Component({
   selector: 'app-not-found',
@@ -13,6 +13,6 @@ export class NotFoundComponent {
     this.router.navigate([params]);
   }
   ngOnInit(): void {
-    
+
   }
 }

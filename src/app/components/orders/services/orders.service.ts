@@ -1,9 +1,9 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Order } from '../../shared/interfaces/order';
+import { Order } from '../../../shared/interfaces/order';
 import { environment } from 'src/environments/environment';
-import { AuthService } from '../../shared/auth/services/auth.service';
+import { AuthService } from '../../../shared/auth/services/auth.service';
 import { DataService } from 'src/app/shared/services/data/data.service';
 
 @Injectable({

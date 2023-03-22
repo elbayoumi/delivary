@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { OrdersComponent } from './orders/orders.component';
-import { AcceptsOrdersComponent } from './accepts-orders/accepts-orders.component';
-import { RejectsOrdersComponent } from './rejects-orders/rejects-orders.component';
-import { LoginComponent } from './login/login.component';
-import { OnDeliverComponent } from './on-deliver/on-deliver.component';
-import { NotFoundComponent } from './not-found/not-found.component';
+import { OrdersComponent } from './components/orders/orders.component';
+import { AcceptsOrdersComponent } from './components/order-history/accepts-orders/accepts-orders.component';
+import { RejectsOrdersComponent } from './components/order-history/rejects-orders/rejects-orders.component';
+import { LoginComponent } from './shared/login/login.component';
+import { OnDeliverComponent } from './components/on-deliver/on-deliver.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AuthGuardGuard } from './shared/guard/canActivate/auth-guard.guard';
-import { LayoutComponent } from './layout/layout.component';
+import { LayoutComponent } from './components/layout/layout.component';
 import { AuthGuard } from "./shared/guard/canActivateChild/auth/auth.guard"
 import { AuthLoginGuard } from './shared/guard/canActivate/auth-login.guard';
-import { AboutComponent } from './about/about.component';
+import { AboutComponent } from './components/about/about.component';
 const routes: Routes = [
 
   {
@@ -31,10 +31,10 @@ const routes: Routes = [
       ,
       { path: 'about', title: 'About Us', component: AboutComponent }
 
-    ] , canActivate: [AuthGuard]
+    ], canActivate: [AuthGuard]
   },
 
-  { path: 'login', title: 'login', component: LoginComponent,canActivate:[AuthLoginGuard] },
+  { path: 'login', title: 'login', component: LoginComponent, canActivate: [AuthLoginGuard] },
   { path: '**', redirectTo: 'orders', pathMatch: 'full' }
 
 ];

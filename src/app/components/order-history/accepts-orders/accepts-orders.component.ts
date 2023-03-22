@@ -1,9 +1,9 @@
 import { Component, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Order } from '../shared/interfaces/order'
+import { Order } from '../../../shared/interfaces/order'
 import { AllOrdersService } from './services/all-orders.service';
-import { AuthService } from '../shared/auth/services/auth.service';
-import { DataService } from '../shared/services/data/data.service';
+import { AuthService } from '../../../shared/auth/services/auth.service';
+import { DataService } from '../../../shared/services/data/data.service';
 @Component({
   selector: 'app-accepts-orders',
   templateUrl: './accepts-orders.component.html',
@@ -15,9 +15,9 @@ export class AcceptsOrdersComponent {
   currentArrayOfData: Order | undefined;
   arrayFeeses: any;
   sumFeeses = 0
-  length_returned=Number( localStorage.getItem('length of returned'))
-  constructor(private router: Router, private service: AllOrdersService, private activatedRoute: ActivatedRoute,  private dataService: DataService, private authService: AuthService) { }
-   dataArrayForApi: Order[] = [
+  length_returned = Number(localStorage.getItem('length of returned'))
+  constructor(private router: Router, private service: AllOrdersService, private activatedRoute: ActivatedRoute, private dataService: DataService, private authService: AuthService) { }
+  dataArrayForApi: Order[] = [
     {
       "id": 1,
       "created_at": 'string',
@@ -38,10 +38,10 @@ export class AcceptsOrdersComponent {
       "clientName": "zaater",
       "clientPhone": "1234567890"
     }];
-   dataApi: any=''
+  dataApi: any = ''
 
   // git data from local storage
-   dataFromlocalStorage: any[] = [];
+  dataFromlocalStorage: any[] = [];
   ///
   // goTo(prop: any, i: any) {
   //   if (localStorage.getItem('data') == null) {
@@ -64,8 +64,8 @@ export class AcceptsOrdersComponent {
       this.laoding = false
 
       this.dataArrayForApi = res.data
-      this.arrayFeeses = res.data.map((res: any) => this.sumFeeses +=parseInt(res.delivaryFees))
-      localStorage.setItem('sumFeeses',JSON.stringify( this.sumFeeses))
+      this.arrayFeeses = res.data.map((res: any) => this.sumFeeses += parseInt(res.delivaryFees))
+      localStorage.setItem('sumFeeses', JSON.stringify(this.sumFeeses))
       console.log(res.data)
       /// to check if id is an exest within or you wont all orsers accepts from api
       if (this.activatedRoute.snapshot.paramMap.get('id')) {

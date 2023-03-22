@@ -1,14 +1,14 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { OrdersService } from './services/orders.service';
-import { Order } from '../shared/interfaces/order';
-import { AuthService } from '../shared/auth/services/auth.service';
-import { Waiting } from '../shared/interfaces/waiting';
-import { UserService } from '../shared/services/userData/user.service';
+import { Order } from '../../shared/interfaces/order';
+import { AuthService } from '../../shared/auth/services/auth.service';
+import { Waiting } from '../../shared/interfaces/waiting';
+import { UserService } from '../../shared/services/userData/user.service';
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
-import {faPhone} from '@fortawesome/free-solid-svg-icons'
-import {faMoneyBill1Wave} from '@fortawesome/free-solid-svg-icons'
+import { faPhone } from '@fortawesome/free-solid-svg-icons'
+import { faMoneyBill1Wave } from '@fortawesome/free-solid-svg-icons'
 
 @Component({
   selector: 'app-orders',
@@ -16,12 +16,12 @@ import {faMoneyBill1Wave} from '@fortawesome/free-solid-svg-icons'
   styleUrls: ['./orders.component.scss']
 })
 export class OrdersComponent implements OnInit {
- FontAwesome={
-  faPenToSquare:faPenToSquare,
-  faTrash:faTrash,
-  faPhone:faPhone,
-  faMoneyBill1Wave:faMoneyBill1Wave,
- }
+  FontAwesome = {
+    faPenToSquare: faPenToSquare,
+    faTrash: faTrash,
+    faPhone: faPhone,
+    faMoneyBill1Wave: faMoneyBill1Wave,
+  }
 
   constructor(private router: Router, private service: OrdersService
     , private authService: AuthService, private userService: UserService) { }
@@ -29,7 +29,7 @@ export class OrdersComponent implements OnInit {
 
   allDataArrayForApi: Waiting | undefined
   message: string = ''
-dataArrayForApi: any = ''
+  dataArrayForApi: any = ''
   goTo(param: any, i: any) {
 
     // this.router.navigate([param,this.dataArrayForApi[i].id])
@@ -66,8 +66,8 @@ dataArrayForApi: any = ''
     this.laoding = true
     this.service.getAllOrders().subscribe((res: any) => {
       this.laoding = false
-        this.dataArrayForApi = res.data
-        this.allDataArrayForApi = res
+      this.dataArrayForApi = res.data
+      this.allDataArrayForApi = res
       this.message = res.message
       // console.log("aaarrray",res);
       // this.dataArrayForApi=res.filter((a:any) => { return a.status == "waiting"})
