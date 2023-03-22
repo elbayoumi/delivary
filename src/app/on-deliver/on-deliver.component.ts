@@ -12,6 +12,7 @@ import {faPhone} from '@fortawesome/free-solid-svg-icons'
   styleUrls: ['./on-deliver.component.scss']
 })
 export class OnDeliverComponent {
+  showDate: Date|undefined;
   constructor(private router: Router, private authService: AuthService, private activatedRoute: ActivatedRoute, private service: OrdersService) { }
   onDelivarig: any = ''
   faPhone=faPhone
@@ -35,8 +36,9 @@ export class OnDeliverComponent {
     this.authService.getDataByStatus('onDelivering').subscribe((res: any) => {
       this.laoding = false
       this.onDelivarig = res
-      console.log(res)
-    }, (error: any) => {
+      setInterval(()=>{
+        this.showDate=new Date();
+        },1000)    }, (error: any) => {
       this.laoding = false
 
       console.log('this is error message', error)
