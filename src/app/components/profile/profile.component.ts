@@ -65,11 +65,11 @@ export class ProfileComponent {
     this.authService.inf().subscribe((res: any) => {
       this.delevaryGuyInfo = res.data
       // this.DateChangePattern = [[...res.data.created_at],[...res.data.updated_at]].map(p=>p.splice(0,10,0))
-      console.log(this.delevaryGuyInfo)
+      // console.log(this.delevaryGuyInfo)
       this.id = res.data.id
     }, (err) => {
       this.message = err.error.message
-      console.log(err.error.message)
+      // console.log(err.error.message)
     })
   }
   changeData() {
@@ -81,7 +81,7 @@ export class ProfileComponent {
   }
   save(): void {
     const dataUpdateValue = this.dataUpdate.value
-    console.log(dataUpdateValue)
+    // console.log(dataUpdateValue)
     this.authService.deliveryUpdateData(dataUpdateValue.email, dataUpdateValue.motorCycleNumber, dataUpdateValue.password, dataUpdateValue.phone, dataUpdateValue.userName, this.id).subscribe(res => {
       // console.log(res)
       this.boolChangeData = false
@@ -90,7 +90,7 @@ export class ProfileComponent {
     }, (err: string) => {
       this.message = 'Please complete all information to be changed !!'
 
-      console.log(err)
+      console.log('111111111111',err)
     })
 
   }

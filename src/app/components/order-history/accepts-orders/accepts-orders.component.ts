@@ -42,21 +42,11 @@ export class AcceptsOrdersComponent {
 
   // git data from local storage
   dataFromlocalStorage: any[] = [];
-  ///
-  // goTo(prop: any, i: any) {
-  //   if (localStorage.getItem('data') == null) {
-  //     this.router.navigate(['/login'])
-  //     localStorage.clear();
-  //   } else {
-  //     this.router.navigate([prop, this.dataArrayForApi[i].id])
-  //   }
-  // }
+
   backTo(prop: any) {
     this.dataService.routerLinkWithIsAuth(prop)
-    // this.router.navigate([prop])
 
   }
-  /// api data from service accepts orders
   getOrders() {
     this.laoding = true
 
@@ -66,7 +56,7 @@ export class AcceptsOrdersComponent {
       this.dataArrayForApi = res.data
       this.arrayFeeses = res.data.map((res: any) => this.sumFeeses += parseInt(res.delivaryFees))
       localStorage.setItem('sumFeeses', JSON.stringify(this.sumFeeses))
-      console.log(res.data)
+      // console.log(res.data)
       /// to check if id is an exest within or you wont all orsers accepts from api
       if (this.activatedRoute.snapshot.paramMap.get('id')) {
         this.currentArrayOfData = this.dataArrayForApi.find(i => i.id == (this.activatedRoute.snapshot.paramMap.get('id') || 1))
@@ -74,7 +64,7 @@ export class AcceptsOrdersComponent {
       } else {
         this.dataApi = this.dataArrayForApi
       }
-      console.log(this.activatedRoute.snapshot.paramMap.get('id'), this.dataArrayForApi)
+      // console.log(this.activatedRoute.snapshot.paramMap.get('id'), this.dataArrayForApi)
     })
   }
 

@@ -19,7 +19,7 @@ export class RejectsOrdersComponent {
 
   ngOnInit(): void {
     this.authService.getDataByStatus('returned').subscribe((res: any) => {
-      console.log(res);
+      // console.log(res);
       this.respose = res.data
       this.arrayFeeses = res.data.map((res: any) => this.sumFeeses += parseInt(res.delivaryFees))
       localStorage.setItem("length of returned", this.respose.length)
