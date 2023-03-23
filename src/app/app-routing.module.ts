@@ -11,7 +11,7 @@ import { AuthGuardGuard } from './shared/guard/canActivate/auth-guard.guard';
 import { LayoutComponent } from './components/layout/layout.component';
 import { AuthGuard } from "./shared/guard/canActivateChild/auth/auth.guard"
 import { AuthLoginGuard } from './shared/guard/canActivate/auth-login.guard';
-import { AboutComponent } from './about/about.component';
+import { AboutComponent } from './components/about/about.component';
 const routes: Routes = [
 
   {
@@ -19,11 +19,11 @@ const routes: Routes = [
       { path: '', redirectTo: 'orders', pathMatch: 'full' },
       { path: 'orders', title: 'wating orders', component: OrdersComponent },
 
-//       {
-//         path: '',
-//         loadChildren: () => import('src/app/components/components.module').then(m => m.ComponentsModule)
-//       }
-// ,
+      //       {
+      //         path: '',
+      //         loadChildren: () => import('src/app/components/components.module').then(m => m.ComponentsModule)
+      //       }
+      // ,
       { path: 'profile', title: 'profile', component: ProfileComponent },
       { path: 'delivered', title: 'delivared', component: AcceptsOrdersComponent }
 

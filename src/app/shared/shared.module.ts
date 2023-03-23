@@ -10,7 +10,7 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
 import { ProfileComponent } from '../components/profile/profile.component';
 import { LayoutComponent } from '../components/layout/layout.component';
 import { ByscalSpinnerComponent } from './components/byscal-spinner/byscal-spinner.component';
-import { AboutComponent } from '../about/about.component';
+import { AboutComponent } from '../components/about/about.component';
 import { AppRoutingModule } from '../app-routing.module';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';

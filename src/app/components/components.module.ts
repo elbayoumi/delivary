@@ -7,7 +7,7 @@ import { OnDeliverComponent } from './on-deliver/on-deliver.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ProfileComponent } from './profile/profile.component';
 import { LayoutComponent } from './layout/layout.component';
-import { AboutComponent } from '../about/about.component';
+import { AboutComponent } from './about/about.component';
 import { RouterModule, Routes } from '@angular/router';
 import { AcceptsOrdersComponent } from './order-history/accepts-orders/accepts-orders.component';
 import { RejectsOrdersComponent } from './order-history/rejects-orders/rejects-orders.component';
