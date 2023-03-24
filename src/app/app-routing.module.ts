@@ -24,15 +24,16 @@ const routes: Routes = [
       //         loadChildren: () => import('src/app/components/components.module').then(m => m.ComponentsModule)
       //       }
       // ,
-      { path: 'profile', title: 'profile', component: ProfileComponent },
-      { path: 'delivered', title: 'delivared', component: AcceptsOrdersComponent }
+      { path: 'profile', title: 'Profile', component: ProfileComponent },
+      { path: 'delivered', title: 'Delivared', component: AcceptsOrdersComponent }
 
       ,
-      { path: 'onDelivering', title: 'onDelivering', component: OnDeliverComponent }
+      {path:'',loadChildren:()=> import('src/app/test/test.module').then(m=>m.TestModule)},
+      { path: 'onDelivering', title: 'On Delivering', component: OnDeliverComponent }
       , { path: 'not-found', component: NotFoundComponent }
 
       ,
-      { path: 'returned', title: 'returned', component: RejectsOrdersComponent }
+      { path: 'returned', title: 'Returned', component: RejectsOrdersComponent }
       ,
       { path: 'about', title: 'About Us', component: AboutComponent }
     ], canActivate: [AuthGuard]

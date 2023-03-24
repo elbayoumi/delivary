@@ -85,12 +85,13 @@ export class ProfileComponent {
     this.authService.deliveryUpdateData(dataUpdateValue.email, dataUpdateValue.motorCycleNumber, dataUpdateValue.password, dataUpdateValue.phone, dataUpdateValue.userName, this.id).subscribe(res => {
       // console.log(res)
       this.boolChangeData = false
-      localStorage.clear()
+      localStorage.removeItem('sumFeeses')
+      localStorage.removeItem('token');
       this.router.navigate(['login'])
     }, (err: string) => {
       this.message = 'Please complete all information to be changed !!'
 
-      console.log('111111111111',err)
+      console.log('111111111111', err)
     })
 
   }
