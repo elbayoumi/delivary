@@ -12,7 +12,10 @@ import { faPhone } from '@fortawesome/free-solid-svg-icons'
   styleUrls: ['./on-deliver.component.scss']
 })
 export class OnDeliverComponent {
-  showDate: Date | undefined;
+  started=JSON.parse(localStorage.getItem('date')||'')
+  //  started=localStorage.getItem("date")?JSON.parse(localStorage.getItem("date")):''
+  showDate:any
+  getHours:number =1
   constructor(private router: Router, private authService: AuthService, private activatedRoute: ActivatedRoute, private service: OrdersService) { }
   onDelivarig: any = ''
   faPhone = faPhone
@@ -36,15 +39,18 @@ export class OnDeliverComponent {
     this.authService.getDataByStatus('onDelivering').subscribe((res: any) => {
       this.laoding = false
       this.onDelivarig = res
-      setInterval(() => {
-        this.showDate = new Date();
-      }, 1000)
+
     }, (error: any) => {
       this.laoding = false
 
       console.log('this is error message', error)
     })
-
+    setInterval(() => {
+      const showDate = new Date();
+      this.getHours=Number( (showDate.getHours()*60))+Number( showDate.getMinutes())
+      this.showDate = new Date();
+    }, 1000)
   }
+
 
 }

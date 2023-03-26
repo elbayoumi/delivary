@@ -18,6 +18,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { OrderHistoryModule } from '../components/order-history/order-history.module';
+import { MoneyPipe } from './pipes/money/money.pipe';
 
 
 
@@ -28,7 +29,9 @@ import { OrderHistoryModule } from '../components/order-history/order-history.mo
     LoginComponent,
 
     ByscalSpinnerComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    MoneyPipe,
+
   ],
   imports: [
     CommonModule,

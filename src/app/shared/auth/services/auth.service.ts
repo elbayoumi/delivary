@@ -15,7 +15,7 @@ export class AuthService {
 
   login(userName: string, password: string): Observable<any> {
     // console.log("test"+this.http.post('https://fakestoreapi.com/auth/login',{userName,password}).subscribe)
-    return this.http.post(environment.baseAPI + 'deliverystaff/login', { 'user-name': userName, 'password': password })
+    return this.http.post(environment.baseAPI + 'deliverystaff/login', { 'userName': userName, 'password': password })
   }
   logout() {
 
@@ -32,45 +32,24 @@ export class AuthService {
   // }
 
   updateStatus(prop: string, id: string) {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Authorization': `Bearer ${this.token}`
-      })
-    };
-    return this.http.get<any>(`${environment.baseAPI}order/update/${id}/${prop}`, httpOptions)
+
+
+    return this.http.get<any>(`${environment.baseAPI}order/update/${id}/${prop}`)
 
   }
   getDataByStatus(Status: String) {
-    return this.http.get(environment.baseAPI + 'orders/' + Status, {
-
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-        'authorization': `Bearer ${this.token}`
-      })
-    });
+    return this.http.get(environment.baseAPI + 'orders/' + Status );
   }
   deliveryUpdateData(email: any, motorCycleNumber: any, password: any, phone: any, userName: any, id: any) {
     let body = {
       'email': email, 'motorCycleNumber': motorCycleNumber, 'password': password, 'phone': phone, 'userName': userName
     }
-    let optins = {
-      headers: new HttpHeaders({
-        "Authorization": `Bearer ${this.token}`,
-      })
-    }
-    return this.http.put(`${environment.baseAPI}delivery/update/${id}`, body, optins)
+
+    return this.http.put(`${environment.baseAPI}delivery/update/${id}`, body)
   }
   inf(): Observable<any> {
     return this.http.get(
-      environment.baseAPI + 'delivery/info',
-      {
-        headers: new HttpHeaders(
-          {
-            'Authorization': `Bearer ${this.token}`
-          }
-        )
-      }
+      environment.baseAPI + 'delivery/info'
     )
   }
 

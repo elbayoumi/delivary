@@ -31,13 +31,16 @@
 
   <app-byscal-spinner ></app-byscal-spinner>
 
-<p class="p-2">{{showDate}}</p>
-          <a (click)="goTo('delivered')" class="btn btn-success m-2">delivered</a>
+  <p class="p-2">{{showDate | date:'medium'}}</p>
+  <p class="p-2">you start at {{started.getHours+':'+started.getMinutes+":"+started.getSeconds}}</p>
+  <p class="p-2">you started from {{(getHours-started.allMinutes)}} minutes</p>
+
+  <a (click)="goTo('delivered')" class="btn btn-success m-2">delivered</a>
           <a (click)="goTo('returned')" class="btn btn-danger m-2">returned</a>
         </div>
-        <div class="back-to-shop btn" (click)="goTo('orders')"><a>&leftarrow;</a><span class="text-muted">Back to
+        <!-- <div class="back-to-shop btn" (click)="goTo('orders')"><a>&leftarrow;</a><span class="text-muted">Back to
             Orders</span></div>
-      </div>
+      </div> -->
     </div>
 
 

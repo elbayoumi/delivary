@@ -38,7 +38,8 @@ export class OrdersComponent implements OnInit {
     }, (err: any) => {
       console.log(err.message);
     })
-
+    const date = new Date();
+    localStorage.setItem('date',JSON.stringify( {getFullYear:date.getFullYear(),getDay:date.getDay(),getHours:date.getHours(),getMinutes:date.getMinutes(),getSeconds:date.getSeconds(),allMinutes:(date.getHours()*60)+date.getMinutes()}))
     // this.routingForParamOrNot(param)
 
     this.router.navigate([param])
