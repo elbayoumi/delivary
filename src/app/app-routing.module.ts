@@ -17,14 +17,14 @@ const routes: Routes = [
   {
     path: '', component: LayoutComponent, children: [
       { path: '', redirectTo: 'orders', pathMatch: 'full' },
-      { path: 'orders', title: 'Wating Orders', component: OrdersComponent },
+      // { path: 'orders', title: 'Wating Orders', component: OrdersComponent },
 
       //       {
       //         path: '',
       //         loadChildren: () => import('src/app/components/components.module').then(m => m.ComponentsModule)
       //       }
       // ,
-      { path: 'profile', title: 'Profile', component: ProfileComponent },
+      // { path: 'profile', title: 'Profile', component: ProfileComponent },
       { path: 'delivered', title: 'Delivared', component: AcceptsOrdersComponent }
 
       ,

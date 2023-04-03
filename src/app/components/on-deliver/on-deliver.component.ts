@@ -39,18 +39,18 @@ export class OnDeliverComponent {
     this.authService.getDataByStatus('onDelivering').subscribe((res: any) => {
       this.laoding = false
       this.onDelivarig = res
+      setInterval(() => {
+        const showDate = new Date();
+        this.getHours=Number( (showDate.getHours()*60))+Number( showDate.getMinutes())
+        this.showDate = new Date();
+      }, 1000)
 
     }, (error: any) => {
       this.laoding = false
 
       console.log('this is error message', error)
     })
-    setInterval(() => {
-      const showDate = new Date();
-      this.getHours=Number( (showDate.getHours()*60))+Number( showDate.getMinutes())
-      this.showDate = new Date();
-    }, 1000)
-  }
 
+  }
 
 }
