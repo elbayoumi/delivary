@@ -16,6 +16,7 @@ export class OnDeliverComponent {
   //  started=localStorage.getItem("date")?JSON.parse(localStorage.getItem("date")):''
   showDate:any
   getHours:number =1
+  condition: any=null
   constructor(private router: Router, private authService: AuthService, private activatedRoute: ActivatedRoute, private service: OrdersService) { }
   onDelivarig: any = ''
   faPhone = faPhone
@@ -39,6 +40,9 @@ export class OnDeliverComponent {
     this.authService.getDataByStatus('onDelivering').subscribe((res: any) => {
       this.laoding = false
       this.onDelivarig = res
+      this.condition=this.onDelivarig.data
+      console.log(this.onDelivarig.data)
+      console.log(null==null)
       setInterval(() => {
         const showDate = new Date();
         this.getHours=Number( (showDate.getHours()*60))+Number( showDate.getMinutes())
