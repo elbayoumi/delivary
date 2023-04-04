@@ -36,7 +36,7 @@ export class OrdersComponent implements OnInit {
     this.authService.updateStatus(param, this.dataArrayForApi[i].id).subscribe((res: any) => {
       console.log(res);
     }, (err: any) => {
-      console.log(err.message);
+      // console.log(err.message);
     })
     const date = new Date();
     localStorage.setItem('date',JSON.stringify( {getFullYear:date.getFullYear(),getDay:date.getDay(),getHours:date.getHours(),getMinutes:date.getMinutes(),getSeconds:date.getSeconds(),allMinutes:(date.getHours()*60)+date.getMinutes()}))
